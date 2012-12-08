@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'vault-dev-tools/version'
+require 'vault-test-tools/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "vault-dev-tools"
-  gem.version       = Vault::Dev::Tools::VERSION
+  gem.name          = "vault-test-tools"
+  gem.version       = Vault::Test::VERSION
   gem.authors       = ["Chris Continanza", "Jamu Kakar"]
   gem.email         = ["chriscontinanza@gmail.com", "csquared@heroku.com", "jkakar@heroku.com"]
   gem.description   = %q{Basic tools for Heroku Vault's Ruby projects}
@@ -21,4 +21,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'minitest'
   gem.add_dependency 'rack-perftools_profiler'
   gem.add_dependency 'nokogiri'
+  gem.add_dependency 'rack-test'
 end

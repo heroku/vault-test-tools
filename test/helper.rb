@@ -1,1 +1,2 @@
-require 'vault-tools/test'
+
+require 'vault-test-tools'
