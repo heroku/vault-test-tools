@@ -1,6 +1,8 @@
 require "vault-test-tools/version"
 
 require 'rack/test'
+require 'nokogiri'
+
 require "vault-test-tools/test_case"
 require "vault-test-tools/spec"
 require "vault-test-tools/helpers"
