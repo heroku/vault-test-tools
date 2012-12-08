@@ -1,24 +1,61 @@
-# Vault::Dev::Tools
+# Vault::Test
 
-TODO: Write a gem description
+Test Tools for the Heroku Vault Team
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'vault-dev-tools'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install vault-dev-tools
+    group :test do
+      gem 'vault-test-tools'
+    end
 
 ## Usage
 
-TODO: Write usage instructions here
+### test/helper.rb
+
+```ruby
+require 'vault-test-tools'
+```
+
+### Test Base Classes
+
+Sublcass and go:
+
+```ruby
+class MyTest < Vault::TestCase
+  def test_tautologies
+    assert_equal 1+1,2
+  end
+end
+```
+
+### Spec Base Class
+
+Automatically installed as default.  Just:
+
+```ruby
+describe 'Anything' do
+  it 'should be a Vault::Spec' do
+    MiniTest::Spec.spec_type('').must_equal Vault::Spec
+  end
+end
+```
+
+### Uniform Module Sharing
+
+To extend your test classes uniformly, use the method `Vault::Test.include_in_all`
+
+```ruby
+module MyTestHelperClass
+  def app; Vault::InvoiceBuilder::Web; end
+end
+
+Vault::Test.include_in_all Vault::MyTestHelperClass
+```
+
+Now you have an `#app` method in your `Vault::TestCase` and your `Vault::Spec`
+
 
 ## Contributing
 
