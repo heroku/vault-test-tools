@@ -1,0 +1,4 @@
+#! /usr/bin/env ruby
+
+system(%|bundle exec rdoc --ri lib test|)
+system(%|bundle exec rdoc --force-output lib test|)

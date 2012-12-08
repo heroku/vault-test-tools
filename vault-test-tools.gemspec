@@ -22,4 +22,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack-perftools_profiler'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'rack-test'
+  gem.add_dependency 'rdoc'
 end
