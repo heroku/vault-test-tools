@@ -1,4 +1,4 @@
-module Vault::TestHelpers
+module Vault::HTMLTestHelpers
   def save_and_open_page(html = nil, name = 'page.html', i = 1)
     html ||= last_response.body
     name = "page_#{i=i+1}.html" while File.exist? name
@@ -28,13 +28,4 @@ module Vault::TestHelpers
     assert e, "Element not found: #{css_string}"
     assert_includes e.content, content
   end
-
-  def with_env(key, value)
-    old_env = ENV[key]
-    ENV[key] = value
-    yield
-  ensure
-    ENV[key] = old_env
-  end
 end
-
