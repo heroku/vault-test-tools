@@ -5,8 +5,8 @@ require 'nokogiri'
 
 require "vault-test-tools/test_case"
 require "vault-test-tools/spec"
-require "vault-test-tools/environment_test_helpers"
-require "vault-test-tools/html_test_helpers"
+require "vault-test-tools/environment_helpers"
+require "vault-test-tools/html_helpers"
 
 module Vault
   module Test
@@ -18,5 +18,5 @@ module Vault
 end
 
 Vault::Test.include_in_all Rack::Test::Methods
-Vault::Test.include_in_all Vault::EnvironmentTestHelpers
-Vault::Test.include_in_all Vault::HTMLTestHelpers
+Vault::Test.include_in_all Vault::Test::EnvironmentHelpers
+Vault::Test.include_in_all Vault::Test::HTMLHelpers

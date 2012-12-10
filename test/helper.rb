@@ -1,2 +1,1 @@
-
 require 'vault-test-tools'
