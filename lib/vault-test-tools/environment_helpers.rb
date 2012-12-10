@@ -1,4 +1,4 @@
-module Vault::EnvironmentTestHelpers
+module Vault::Test::EnvironmentHelpers
   # Override an ENV variable for the current test.  The original value will be
   # restored automatically when the test finishes.
   def set_env(key, value)

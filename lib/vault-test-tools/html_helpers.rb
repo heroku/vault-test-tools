@@ -1,4 +1,4 @@
-module Vault::HTMLTestHelpers
+module Vault::Test::HTMLHelpers
   def save_and_open_page(html = nil, name = 'page.html', i = 1)
     html ||= last_response.body
     name = "page_#{i=i+1}.html" while File.exist? name
