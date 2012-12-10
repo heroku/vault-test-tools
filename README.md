@@ -1,6 +1,6 @@
 # Vault::Test
 
-Test Tools for the Heroku Vault Team
+Test Tools for the Heroku Vault Team.
 
 ## Installation
 
@@ -25,7 +25,7 @@ Sublcass and go:
 ```ruby
 class MyTest < Vault::TestCase
   def test_tautologies
-    assert_equal 1+1,2
+    assert_equal 1+1, 2
   end
 end
 ```
@@ -44,7 +44,8 @@ end
 
 ### Uniform Module Sharing
 
-To extend your test classes uniformly, use the method `Vault::Test.include_in_all`
+To extend your test and spec base classes uniformly, use the method
+`Vault::Test.include_in_all`
 
 ```ruby
 module MyTestHelperClass
@@ -56,7 +57,6 @@ Vault::Test.include_in_all Vault::MyTestHelperClass
 
 Now you have an `#app` method in your `Vault::TestCase` and your `Vault::Spec`
 
-
 ## Contributing
 
 1. Fork it
@@ -64,3 +64,8 @@ Now you have an `#app` method in your `Vault::TestCase` and your `Vault::Spec`
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+## Releasing
+
+Update the version in `lib/vault-test-tools/version` and run
+`bundle exec rake release`.
