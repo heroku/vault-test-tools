@@ -10,9 +10,11 @@ require "vault-test-tools/html_helpers"
 
 module Vault
   module Test
-    def self.include_in_all(_module)
-      Vault::TestCase.send(:include, _module)
-      Vault::Spec.send(:include, _module)
+    def self.include_in_all(*modules)
+      modules.each do |_module|
+        Vault::TestCase.send(:include, _module)
+        Vault::Spec.send(:include, _module)
+      end
     end
   end
 end
