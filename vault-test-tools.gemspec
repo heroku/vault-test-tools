@@ -23,5 +23,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'rack-test'
   gem.add_dependency 'rdoc'
-  gem.add_dependency 'scrolls'
+  gem.add_dependency 'yard'
+  gem.add_dependency 'redcarpet'
 end

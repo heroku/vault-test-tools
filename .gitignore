@@ -17,3 +17,12 @@ test/version_tmp
 tmp
 test/.test.profile*
 vendor
+bin/nokogiri
+bin/pprof.rb
+bin/rackup
+bin/redcarpet
+bin/ri
+bin/turn
+bin/yard
+bin/yardoc
+bin/yri
