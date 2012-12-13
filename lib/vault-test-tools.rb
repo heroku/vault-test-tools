@@ -7,6 +7,7 @@ require "vault-test-tools/test_case"
 require "vault-test-tools/spec"
 require "vault-test-tools/environment_helpers"
 require "vault-test-tools/html_helpers"
+require "vault-test-tools/db_helpers"
 
 module Vault
   module Test
@@ -18,7 +19,3 @@ module Vault
     end
   end
 end
-
-Vault::Test.include_in_all Rack::Test::Methods
-Vault::Test.include_in_all Vault::Test::EnvironmentHelpers
-Vault::Test.include_in_all Vault::Test::HTMLHelpers
