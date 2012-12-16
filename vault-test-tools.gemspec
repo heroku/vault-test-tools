@@ -24,5 +24,6 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack-test'
   gem.add_dependency 'rdoc'
   gem.add_dependency 'yard'
+  gem.add_dependency 'yard-sinatra'
   gem.add_dependency 'redcarpet'
 end
