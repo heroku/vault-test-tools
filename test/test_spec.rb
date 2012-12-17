@@ -1,3 +1,5 @@
+require 'helper'
+
 class TestSpec < Vault::TestCase
 
   def test_default_spec_class_is_vault_spec
