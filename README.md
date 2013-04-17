@@ -1,6 +1,7 @@
 # Vault::Test
 
-Test Tools for the Heroku Vault Team.
+Test is the English phrase for テスト.  Test tools for the Heroku
+Vault Team.
 
 ## Installation
 
