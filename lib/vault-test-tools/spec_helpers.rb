@@ -31,7 +31,7 @@ module Vault::Test
          File.open(json_file(name), 'w') { |f| f << data }
          data
        rescue => e
-         $stderr.puts "Using cached statement.json"
+         $stderr.puts "Using cached #{name}.json"
          File.read(json_file(name))
        end
     end
