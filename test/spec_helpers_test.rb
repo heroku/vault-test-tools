@@ -29,13 +29,26 @@ class SpecHelpersTest < Vault::TestCase
     assert_equal("USAGE JSON", statement_json)
   end
 
+  # Call both methods with stubbed HTTP endpoints
+  def test_all_endpoints
+    stub(File).open
+    %w{usage statement}.each do |type|
+      url = "#{@url}/#{type}.json"
+      FakeWeb.register_uri(:get, url, body: "USAGE JSON")
+      capture_io do
+        assert_equal("USAGE JSON", self.send("#{type}_json"))
+      end
+    end
+  end
+
   # If request blows up use cached JSON
   def test_uses_json_on_request_failure
     stub(URI).parse { raise RuntimeError }
     mock(File).read(STATEMENT_FILE) { "USAGE JSON" }
-    _, stderr = capture_io do
+    stdout, stderr = capture_io do
       assert_equal("USAGE JSON", statement_json)
     end
+    assert_includes(stderr, "statement.json")
   end
 
   # Make sure we save it when we get it so we don't have
@@ -48,14 +61,16 @@ class SpecHelpersTest < Vault::TestCase
     @statement_json = nil
     # now no network
     stub(URI).parse { raise RuntimeError }
-    assert_equal("USAGE JSON", statement_json)
+    capture_io do
+      assert_equal("USAGE JSON", statement_json)
+    end
   end
 
   # This is the real error scenario
   def test_bombs_if_no_cached_json
     stub(URI).parse { raise RuntimeError }
     stub(File).read { raise RuntimeError }
-    _, stderr = capture_io do
+    capture_io do
       assert_raises RuntimeError do
         statement_json
       end
