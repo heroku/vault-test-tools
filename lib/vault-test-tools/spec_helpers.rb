@@ -5,9 +5,6 @@ module Vault::Test
   module SpecHelpers
     extend self
 
-    STATEMENT_JSON_URL  =
-    STATEMENT_JSON_FILE =
-
     def usage_json
       @usage_json ||= read_spec('usage')
     end
