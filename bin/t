@@ -1,4 +1,4 @@
 #! /usr/bin/env ruby
 
 ENV['CPUPROFILE'] = './test/.test.profile'
-exec('bundle exec turn -r perftools -I test -I lib test')
+exec('bundle exec turn -r perftools -I test -I lib test/**/*.rb test/*.rb')
