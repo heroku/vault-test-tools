@@ -6,34 +6,40 @@ module Vault::Test
     extend self
 
     def usage_json
-      @usage_json ||= read_spec('usage')
+      vault_spec('usage.json')
     end
 
     def statement_json
-      @statement_json ||= read_spec('statement')
+      vault_spec('statement.json')
+    end
+
+    # memoizes return value so we don't keep making a request
+    def vault_spec(filename)
+      var_name = "@#{filename.gsub(".",'_')}".to_sym
+      spec_value = instance_variable_get(var_name)
+      return spec_value if spec_value
+      instance_variable_set(var_name, read_spec(filename))
     end
 
     protected
-    def json_url(name)
-      "http://vault-specs.herokuapp.com/#{name}.json"
+    def url(name)
+      "http://vault-specs.herokuapp.com/#{name}"
     end
 
-    def json_file(name)
-      "./test/support/#{name}.json"
+    def file(name)
+      "./test/support/#{name}"
     end
 
     # Uses JSON at URL when it can, but will use
     # the cached statement when it can't
     def read_spec(name)
-      @statement_json ||= begin
-         data = Net::HTTP.get(URI.parse(json_url(name)))
-         FileUtils.mkdir_p(File.dirname(json_file(name)))
-         File.open(json_file(name), 'w') { |f| f << data }
-         data
-       rescue => e
-         $stderr.puts "Using cached #{name}.json"
-         File.read(json_file(name))
-       end
+      data = Net::HTTP.get(URI.parse(url(name)))
+      FileUtils.mkdir_p(File.dirname(file(name)))
+      File.open(file(name), 'w') { |f| f << data }
+      data
+    rescue => e
+      $stderr.puts "Using cached #{name}"
+      File.read(file(name))
     end
   end
 end
