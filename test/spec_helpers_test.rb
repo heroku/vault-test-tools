@@ -29,6 +29,15 @@ class SpecHelpersTest < Vault::TestCase
     assert_equal("USAGE JSON", statement_json)
   end
 
+  def test_json_spec
+    stub(File).open
+    url = "#{@url}/usage2v2.json"
+    FakeWeb.register_uri(:get, url, body: "USAGE JSON")
+    capture_io do
+      assert_equal("USAGE JSON", vault_spec('usage2v2.json'))
+    end
+  end
+
   # Call both methods with stubbed HTTP endpoints
   def test_all_endpoints
     stub(File).open
