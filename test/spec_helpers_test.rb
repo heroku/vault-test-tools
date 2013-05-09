@@ -4,6 +4,7 @@ class SpecHelpersTest < Vault::TestCase
   include Vault::Test::SpecHelpers
   include RR::Adapters::MiniTest
   STATEMENT_FILE = './test/support/statement.json'
+  USAGE_FILE     = './test/support/usage.json'
 
   def setup
     super
@@ -18,7 +19,16 @@ class SpecHelpersTest < Vault::TestCase
     FakeWeb.allow_net_connect = true
     # Using the filesystem - dirrrty
     File.unlink(STATEMENT_FILE) if File.exists?(STATEMENT_FILE)
+    File.unlink(USAGE_FILE)     if File.exists?(USAGE_FILE)
     reset #for RR
+  end
+
+  # These are for canonical endpoints
+  def test_named_methods
+    FakeWeb.register_uri(:get, "#{@url}/statement.json", body: "STATEMENT")
+    FakeWeb.register_uri(:get, "#{@url}/usage.json",     body: "USAGE")
+    assert_equal("STATEMENT", statement_json)
+    assert_equal("USAGE",     usage_json)
   end
 
   # Happy path is to use the request from the service
@@ -26,10 +36,11 @@ class SpecHelpersTest < Vault::TestCase
     url = "#{@url}/statement.json"
     FakeWeb.register_uri(:get, url, body: "USAGE JSON")
     stub(File).open(STATEMENT_FILE, 'w')
-    assert_equal("USAGE JSON", statement_json)
+    assert_equal("USAGE JSON", vault_spec('statement.json'))
   end
 
-  def test_json_spec
+  # The statement_json wrapper
+  def test_generic_spec_method
     stub(File).open
     url = "#{@url}/usage2v2.json"
     FakeWeb.register_uri(:get, url, body: "USAGE JSON")
@@ -71,17 +82,17 @@ class SpecHelpersTest < Vault::TestCase
     # now no network
     stub(URI).parse { raise RuntimeError }
     capture_io do
-      assert_equal("USAGE JSON", statement_json)
+      assert_equal("USAGE JSON", vault_spec('statement.json'))
     end
   end
 
   # This is the real error scenario
   def test_bombs_if_no_cached_json
     stub(URI).parse { raise RuntimeError }
-    stub(File).read { raise RuntimeError }
+    stub(File).read { raise RuntimeError, 'boom' }
     capture_io do
-      assert_raises RuntimeError do
-        statement_json
+      assert_raises RuntimeError, 'boom' do
+        vault_spec('usage.json')
       end
     end
   end

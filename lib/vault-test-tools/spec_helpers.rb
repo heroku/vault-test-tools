@@ -33,15 +33,13 @@ module Vault::Test
     # Uses JSON at URL when it can, but will use
     # the cached statement when it can't
     def read_spec(name)
-      @statement_json ||= begin
-         data = Net::HTTP.get(URI.parse(url(name)))
-         FileUtils.mkdir_p(File.dirname(file(name)))
-         File.open(file(name), 'w') { |f| f << data }
-         data
-       rescue => e
-         $stderr.puts "Using cached #{name}.json"
-         File.read(file(name))
-       end
+      data = Net::HTTP.get(URI.parse(url(name)))
+      FileUtils.mkdir_p(File.dirname(file(name)))
+      File.open(file(name), 'w') { |f| f << data }
+      data
+    rescue => e
+      $stderr.puts "Using cached #{name}"
+      File.read(file(name))
     end
   end
 end
