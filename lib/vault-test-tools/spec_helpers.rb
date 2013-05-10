@@ -15,13 +15,19 @@ module Vault::Test
 
     # memoizes return value so we don't keep making a request
     def vault_spec(filename)
-      var_name = "@#{filename.gsub(".",'_')}".to_sym
-      spec_value = instance_variable_get(var_name)
-      return spec_value if spec_value
-      instance_variable_set(var_name, read_spec(filename))
+      return cache[filename] if cache[filename]
+      cache[filename] = read_spec(filename)
+    end
+
+    def reset_vault_specs!
+      @@cache = {}
     end
 
     protected
+    def cache
+      @@cache ||= {}
+    end
+
     def url(name)
       "http://vault-specs.herokuapp.com/#{name}"
     end
