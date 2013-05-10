@@ -1,5 +1,5 @@
-# TODO: move to vault-test-tools
 require 'fileutils'
+require 'net/http'
 
 module Vault::Test
   module SpecHelpers
@@ -39,12 +39,12 @@ module Vault::Test
     # Uses JSON at URL when it can, but will use
     # the cached statement when it can't
     def read_spec(name)
-      data = Net::HTTP.get(URI.parse(url(name)))
+      data = ::Net::HTTP.get(URI.parse(url(name)))
       FileUtils.mkdir_p(File.dirname(file(name)))
       File.open(file(name), 'w') { |f| f << data }
       data
     rescue => e
-      $stderr.puts "Using cached #{name}"
+      $stderr.puts "#{e.message} -> Using cached #{name}"
       File.read(file(name))
     end
   end
