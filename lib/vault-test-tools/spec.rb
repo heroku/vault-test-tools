@@ -6,6 +6,3 @@ class Vault::Spec < MiniTest::Spec
     Scrolls.stream = StringIO.new if defined? Scrolls
   end
 end
-
-# Register our Spec class as the default.
-MiniTest::Spec.register_spec_type //, Vault::Spec
