@@ -9,15 +9,3 @@ require "vault-test-tools/environment_helpers"
 require "vault-test-tools/html_helpers"
 require "vault-test-tools/db_helpers"
 require "vault-test-tools/spec_helpers"
-
-# TODO: Deprecate
-module Vault
-  module Test
-    def self.include_in_all(*modules)
-      modules.each do |_module|
-        Vault::TestCase.send(:include, _module)
-        Vault::Spec.send(:include, _module)
-      end
-    end
-  end
-end
