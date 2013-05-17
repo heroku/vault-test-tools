@@ -17,8 +17,8 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
+  gem.add_dependency 'minitest', '4.7.4'
   gem.add_dependency 'turn'
-  gem.add_dependency 'minitest'
   gem.add_dependency 'rack-perftools_profiler'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'rack-test'
