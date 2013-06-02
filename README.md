@@ -20,10 +20,26 @@ desc "Test the things"
 require 'vault-test-tools/rake_task'
 ```
 
-#### note: we plan on renaming this to `test_task`
+##### note: we plan on renaming this to `test_task`
 
 
 ### test/helper.rb
+
+If you're using `vault-tools` and calling:
+
+in `my-lib-that-calls-vault-setup.rb`
+```ruby
+Vault.setup
+```
+
+then it will automatically be required when RACK_ENV is 'test'
+
+```ruby
+ENV['RACK_ENV'] = 'test'
+require 'my-lib-that-calls-vault-setup'
+```
+
+Otherwise just require it:
 
 ```ruby
 require 'vault-test-tools'
