@@ -31,7 +31,7 @@ require 'vault-test-tools'
 
 ### Test Base Classes
 
-Sublcass and go:
+Subclass and go:
 
 ```ruby
 class MyTest < Vault::TestCase
