@@ -150,6 +150,21 @@ class Test < Vault::TestCase
 end
 ```
 
+##### `Vault::Test::LoggingHepers`
+
+Attaches a `StringIO` to `Scrolls.stream` to capture logs in memory.
+
+```ruby
+class Test < Vault::TestCase
+  include Vault::Test::LoggingHelpers
+
+  def test_logging
+    Scrolls.log(message: 'A log message')
+    assert_equal(Scrolls.stream.string, 'A log message\n')
+  end
+end
+```
+
 ## Setting up a development environment
 
 Install dependencies and setup test databases:
