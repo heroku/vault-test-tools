@@ -3,36 +3,32 @@
 Test is the English phrase for テスト.  Test tools for the Heroku
 Vault Team.
 
-## Installation
+## Overview
 
-Add this line to your application's Gemfile:
+### Installation
+
+Add this line to your application's `Gemfile`:
 
     group :test do
       gem 'vault-test-tools'
     end
 
-## Usage
+### Usage
 
-### Rakefile
+#### Rakefile
 
 ```ruby
-desc "Test the things"
+desc 'Run the test suite'
 require 'vault-test-tools/rake_task'
 ```
 
-##### note: we plan on renaming this to `test_task`
+**Note**: we plan on renaming this to `test_task`.
 
+#### test/helper.rb
 
-### test/helper.rb
-
-If you're using `vault-tools` and calling:
-
-in `my-lib-that-calls-vault-setup.rb`
-```ruby
-Vault.setup
-```
-
-then it will automatically be required when RACK_ENV is 'test'
+If you're using `vault-tools` and calling `Vault.setup` in
+`my-lib-that-calls-vault-setup.rb` then it will automatically be
+required when `RACK_ENV` is `test`.
 
 ```ruby
 ENV['RACK_ENV'] = 'test'
@@ -45,7 +41,7 @@ Otherwise just require it:
 require 'vault-test-tools'
 ```
 
-### Test Base Classes
+#### Test Base Classes
 
 Subclass and go:
 
@@ -57,9 +53,9 @@ class MyTest < Vault::TestCase
 end
 ```
 
-### Spec Base Class
+#### Spec Base Class
 
-#### in spec/helper.rb
+##### in spec/helper.rb
 
 We removed this from the gem so you have do to it in your helper file.
 
@@ -68,7 +64,7 @@ We removed this from the gem so you have do to it in your helper file.
 MiniTest::Spec.register_spec_type //, Vault::Spec
 ```
 
-#### go write some specs
+##### go write some specs
 
 ```ruby
 describe 'Anything' do
@@ -78,17 +74,16 @@ describe 'Anything' do
 end
 ```
 
-### Test Helpers
+#### Test Helpers
 
 You just include the helper you need into the test file you're writing.
 This makes tests very self-contained and also provides a way to document
-what you're pulling in to the test.
+what you're pulling into the test.
 
-If you really want to share something to all the tests then include them
-into `Vault::TestCase`
+If you really want to share something to all the tests then include
+them into `Vault::TestCase`.
 
-
-#### in `test/helper.rb`
+##### in `test/helper.rb`
 
 ```ruby
 class Vault::TestCase
@@ -96,12 +91,13 @@ class Vault::TestCase
 end
 ```
 
-#### `Vault::Test::EnvironmentHelpers`
+##### `Vault::Test::EnvironmentHelpers`
 
-provides a `#set_env` method that temporarily overrides an ENV var
+Provides a `#set_env` method that temporarily overrides an environment
+variable.
 
 ```ruby
-class Test < Vault::TestCase
+class MyTest < Vault::TestCase
   include Vault::Test::EnvironmentHelpers
 
   def test_env_changes
@@ -112,9 +108,9 @@ class Test < Vault::TestCase
 end
 ```
 
-#### `Vault::Test::HTMLHelpers`
+##### `Vault::Test::HTMLHelpers`
 
-provides `#assert_css` and `#save_and_open_page` to make assertions
+Provides `#assert_css` and `#save_and_open_page` to make assertions
 against the `last_response.body` simple.
 
 ```ruby
@@ -129,18 +125,17 @@ class Test < Vault::TestCase
 end
 ```
 
-#### `Vault::Test::SpecHelpers`
+##### `Vault::Test::SpecHelpers`
 
-provides `#usage_json`, `#statement_json` and `#vault_spec` methods
-to pull down and vendor latest specs from the vault-specs app
+Provides `#usage_json`, `#statement_json` and `#vault_spec` methods to
+pull down and vendor latest specs from the `vault-specs` app.  The
+json files are stored in `test/support/<filename>.json` and are used
+only when the live HTTP request against the vault-specs app fails.
 
-the json files are stored in `test/support/<filename>.json` and are
-used only when the live HTTP request against the vault-specs app fails.
-
-yes, this means your tests are making an HTTP request.  what this enables
-is us to update specs and then run tests that immediately use the specs
-on the server.  however, if you're on a plane or don't have internet we
-can easily fall back to the saved json.
+Yes, this means your tests are making an HTTP request.  This enables
+us to update specs and then run tests that immediately use the specs
+on the server.  However, if you're on a plane or don't have internet
+we can easily fall back to the saved JSON.
 
 ```ruby
 class Test < Vault::TestCase
@@ -155,15 +150,39 @@ class Test < Vault::TestCase
 end
 ```
 
-## Contributing
+## Setting up a development environment
 
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Install dependencies and setup test databases:
 
-## Releasing
+    bundle install --binstubs vendor/bin
+    rbenv rehash
+    rake
+
+Run tests:
+
+    bundle exec rake test
+
+See tasks:
+
+    rake -T
+
+Generate API documentation:
+
+    bundle exec yard
+
+## Creating and shipping a change
+
+Create a change by making a branch with the changes you want to merge.
+Open a pull request and signal it to the Vault Team by creating a
+Trello card in the *Needs review* list on the
+[focus board](https://trello.com/b/mV7Qy3aq/vault-team-focus).
 
 Update the version in `lib/vault-test-tools/version` and run
 `bundle exec rake release`.
+
+## Where to get help
+
+Ask for help in the
+[Vault](https://heroku.hipchat.com/rooms/show/175790/vault) room in
+HipChat or send the Vault Team an
+[email](https://groups.google.com/a/heroku.com/forum/#!forum/vault).

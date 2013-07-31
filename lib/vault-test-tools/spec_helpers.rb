@@ -13,7 +13,8 @@ module Vault::Test
       vault_spec('statement.json')
     end
 
-    # memoizes return value so we don't keep making a request
+    # Memoizes return value so we don't keep making a request to download the
+    # spec.
     def vault_spec(filename)
       return cache[filename] if cache[filename]
       cache[filename] = read_spec(filename)
@@ -24,6 +25,7 @@ module Vault::Test
     end
 
     protected
+
     def cache
       @@cache ||= {}
     end
@@ -36,8 +38,8 @@ module Vault::Test
       "./test/support/#{name}"
     end
 
-    # Uses JSON at URL when it can, but will use
-    # the cached statement when it can't
+    # Uses JSON at URL when it can, but will use the cached statement when it
+    # can't.
     def read_spec(name)
       data = ::Net::HTTP.get(URI.parse(url(name)))
       FileUtils.mkdir_p(File.dirname(file(name)))
