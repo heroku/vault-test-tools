@@ -22,6 +22,23 @@ require 'vault-test-tools/rake_task'
 
 ##### note: we plan on renaming this to `test_task`
 
+### bin files
+
+#### Run the tests with `t`
+
+    > t
+
+Runs `bundle exec rake test`
+
+#### Profile the tests with `pt`
+
+    > pt
+
+#### Build the docs with `d`
+
+    > d
+
+Runs `bundle exec yardoc`
 
 ### test/helper.rb
 
