@@ -26,4 +26,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'yard'
   gem.add_dependency 'redcarpet'
   gem.add_dependency 'rr'
+	gem.add_dependency 'pry'
 end
