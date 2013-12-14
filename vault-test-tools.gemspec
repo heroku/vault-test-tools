@@ -19,11 +19,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency 'minitest', '4.7.4'
   gem.add_dependency 'turn'
-  gem.add_dependency 'rack-perftools_profiler'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'rack-test'
-  gem.add_dependency 'rdoc'
-  gem.add_dependency 'yard'
-  gem.add_dependency 'redcarpet'
   gem.add_dependency 'rr'
 end
