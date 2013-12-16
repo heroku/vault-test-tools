@@ -3,6 +3,8 @@
 Test is the English phrase for テスト.  Test tools for the Heroku
 Vault Team.
 
+[![Build Status](https://travis-ci.org/heroku/vault-test-tools.png?branch=v0.3.5)](https://travis-ci.org/heroku/vault-test-tools)
+
 ## Overview
 
 ### Installation
