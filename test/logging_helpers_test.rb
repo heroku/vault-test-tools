@@ -9,4 +9,14 @@ class LoggingHelpersTest < Vault::TestCase
     Scrolls.log(key: 'value')
     assert_equal("key=value", Scrolls.stream.string.strip)
   end
+
+  def test_logline
+    Scrolls.log(foo: 'bar')
+    assert_includes(logline, 'foo=bar')
+  end
+
+  def test_logdata
+    Scrolls.log(foo: 'bar')
+    assert_equal('bar', logdata[:foo])
+  end
 end

@@ -23,4 +23,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rack-test'
   gem.add_dependency 'rr'
   gem.add_dependency 'guard-minitest'
+  gem.add_dependency 'logfmt'
 end
