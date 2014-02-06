@@ -2,7 +2,6 @@ require 'helper'
 
 class SpecHelpersTest < Vault::TestCase
   include Vault::Test::SpecHelpers
-  include RR::Adapters::MiniTest
   STATEMENT_FILE = './test/support/statement.json'
   USAGE_FILE     = './test/support/usage.json'
 
