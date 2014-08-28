@@ -4,7 +4,7 @@ require 'logfmt'
 module Vault::Test::LoggingHelpers
   def setup
     super
-    Scrolls.stream = StringIO.new if defined? Scrolls
+    Scrolls.stream = StringIO.new
     @last_logline = nil
     @last_logdata = nil
   end

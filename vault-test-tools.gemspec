@@ -24,4 +24,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'rr'
   gem.add_dependency 'guard-minitest'
   gem.add_dependency 'logfmt'
+  gem.add_dependency 'scrolls'
 end
