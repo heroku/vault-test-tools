@@ -17,6 +17,6 @@ class LoggingHelpersTest < Vault::TestCase
 
   def test_logdata
     Scrolls.log(foo: 'baz')
-    assert_equal('baz', logdata[:foo])
+    assert_equal('baz', logdata['foo'])
   end
 end
