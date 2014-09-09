@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module Vault::Test::HTMLHelpers
   # Save and open an HTML document in your browser.
   #

@@ -7,7 +7,6 @@ end
 require "vault-test-tools/version"
 
 require 'rack/test'
-# require 'nokogiri'
 
 # Test case mixins.
 require "vault-test-tools/environment_helpers"
