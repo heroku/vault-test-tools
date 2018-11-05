@@ -20,7 +20,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'minitest', '~> 4.7.4'
   gem.add_dependency 'turn'
   gem.add_dependency 'nokogiri'
-  gem.add_dependency 'rack-test'
+  gem.add_dependency 'rack-test', '~> 1.1.0'
   gem.add_dependency 'rr'
   gem.add_dependency 'guard-minitest'
   gem.add_dependency 'logfmt'
