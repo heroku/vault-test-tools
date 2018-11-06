@@ -4,6 +4,10 @@ require 'logfmt'
 module Vault::Test::LoggingHelpers
   def setup
     super
+    Scrolls.init(
+      global_context: {app: 'test_app'},
+      time_unit: 'milliseconds'
+    )
     Scrolls.stream = StringIO.new
     @last_logline = nil
     @last_logdata = nil
