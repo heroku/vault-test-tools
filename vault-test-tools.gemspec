@@ -17,12 +17,10 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
 
-  gem.add_dependency 'minitest', '~> 4.7.4'
-  gem.add_dependency 'turn'
+  gem.add_dependency 'minitest', '~> 5.11'
   gem.add_dependency 'nokogiri'
-  gem.add_dependency 'rack-test', '~> 1.1.0'
+  gem.add_dependency 'rack-test', '~> 1.1'
   gem.add_dependency 'rr'
-  gem.add_dependency 'guard-minitest'
   gem.add_dependency 'logfmt'
   gem.add_dependency 'scrolls', '0.9'
 end
