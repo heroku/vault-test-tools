@@ -9,5 +9,5 @@ group :development do
 end
 
 group :test do
-  # gem 'fakeweb'
+  gem 'fakeweb'
 end
