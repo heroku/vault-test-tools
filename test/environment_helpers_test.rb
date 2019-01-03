@@ -26,6 +26,6 @@ class EnvironmentHelpersTest < Vault::TestCase
     set_env('EMPTY', 'buzz')
     assert_equal('buzz', ENV['EMPTY'])
     teardown
-    assert_equal(nil, ENV['EMPTY'])
+    assert_nil(ENV['EMPTY'])
   end
 end

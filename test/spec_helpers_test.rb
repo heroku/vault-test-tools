@@ -17,8 +17,8 @@ class SpecHelpersTest < Vault::TestCase
     FakeWeb.clean_registry
     FakeWeb.allow_net_connect = true
     # Using the filesystem - dirrrty
-    File.unlink(STATEMENT_FILE) if File.exists?(STATEMENT_FILE)
-    File.unlink(USAGE_FILE)     if File.exists?(USAGE_FILE)
+    File.unlink(STATEMENT_FILE) if File.exist?(STATEMENT_FILE)
+    File.unlink(USAGE_FILE)     if File.exist?(USAGE_FILE)
     reset #for RR
     reset_vault_specs!
   end

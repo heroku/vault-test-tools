@@ -9,5 +9,5 @@ group :development do
 end
 
 group :test do
-  gem 'fakeweb'
+  gem 'fakeweb', git: 'https://github.com/chrisk/fakeweb.git'
 end
