@@ -1,4 +1,5 @@
 require 'minitest/spec'
+require 'scrolls'
 
 # Base class for Vault spec tests.
 class Vault::Spec < MiniTest::Spec
