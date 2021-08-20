@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'minitest', '~> 5.11'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'rack-test', '~> 1.1'
-  gem.add_dependency 'rr'
+  gem.add_dependency 'rr', '~> 1.2'
   gem.add_dependency 'logfmt'
   gem.add_dependency 'scrolls'
 end
