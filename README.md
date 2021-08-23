@@ -3,7 +3,7 @@
 Test is the English phrase for テスト.  Test tools for the Heroku
 Vault Team.
 
-[![Build Status](https://travis-ci.org/heroku/vault-test-tools.png?branch=v0.3.5)](https://travis-ci.org/heroku/vault-test-tools)
+[![CircleCI](https://circleci.com/gh/heroku/vault-test-tools/tree/master.svg?style=shield&circle-token=582cf001404ddc9e0dc49338655238212fafa3f4)](_https://circleci.com/gh/heroku/vault-test-tools/tree/master_)
 
 ## Overview
 

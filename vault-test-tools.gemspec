@@ -13,7 +13,7 @@ Gem::Specification.new do |gem|
   gem.description   = %q{Basic tools for Heroku Vault's Ruby projects}
   gem.summary       = %q{Test classes and stuff you want in your dev, but not prod, environment.}
   gem.homepage      = ""
-  gem.required_ruby_version = '>= 2.5.3'
+  gem.required_ruby_version = '>= 2.7.1'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = ['t']
@@ -23,7 +23,7 @@ Gem::Specification.new do |gem|
   gem.add_dependency 'minitest', '~> 5.11'
   gem.add_dependency 'nokogiri'
   gem.add_dependency 'rack-test', '~> 1.1'
-  gem.add_dependency 'rr'
+  gem.add_dependency 'rr', '~> 1.2'
   gem.add_dependency 'logfmt'
-  gem.add_dependency 'scrolls', '0.9'
+  gem.add_dependency 'scrolls'
 end
