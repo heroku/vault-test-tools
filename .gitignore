@@ -26,3 +26,4 @@ bin/turn
 bin/yard
 bin/yardoc
 bin/yri
+.git/
