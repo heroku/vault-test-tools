@@ -2,7 +2,7 @@ require 'minitest/spec'
 require 'scrolls'
 
 # Base class for Vault spec tests.
-class Vault::Spec < MiniTest::Spec
+class Vault::Spec < Minitest::Spec
   before do
     Scrolls.init(
       global_context: {app: 'test_app'},
